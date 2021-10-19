@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class DjangoRequestLoggingConfig(AppConfig):
-    name = "django-request-logging"
-    verbose_name = "django-request-logging"
+    name = "django_request_logging"
+    verbose_name = "django_request_logging"
