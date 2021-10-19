@@ -18,7 +18,14 @@ def boot_django():
         },
         INSTALLED_APPS=("request_logging",),
         MIDDLEWARE=["request_logging.middleware.RequestLogMiddleware"],
-        REQUEST_LOGGING_PATH="123",
+        REQUEST_LOGGING_CONFIG={
+            "paths_regex": [
+                (r"\/\d+", "/{id}"),
+                (r"\/apply-coupon/?([^\/]*)?", "/apply-coupon/{id}"),
+            ],
+            "log_data_extra": {"athena_table": "motor_api_request", "athena": True,},
+            "log_url_path": "/api/",
+        },
         ROOT_URLCONF="urls",
         TIME_ZONE="UTC",
         USE_TZ=True,
