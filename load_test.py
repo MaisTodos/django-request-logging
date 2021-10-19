@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# import os
+import os
 import sys
 from unittest import TestSuite
 
@@ -9,7 +9,7 @@ from boot_django import boot_django
 boot_django()
 
 default_labels = [
-    "tests.tests",
+    "tests",
 ]
 
 
