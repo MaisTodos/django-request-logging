@@ -16,8 +16,17 @@ def boot_django():
                 "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
             }
         },
-        INSTALLED_APPS=("request_logging",),
-        MIDDLEWARE=["request_logging.middleware.RequestLogMiddleware"],
+        INSTALLED_APPS=(
+            "django.contrib.auth",
+            "django.contrib.contenttypes",
+            "django.contrib.sessions",
+            "request_logging",
+        ),
+        MIDDLEWARE=[
+            "django.contrib.sessions.middleware.SessionMiddleware",
+            "django.contrib.auth.middleware.AuthenticationMiddleware",
+            "request_logging.middleware.RequestLogMiddleware",
+        ],
         REQUEST_LOGGING_CONFIG={
             "paths_regex": [
                 (r"\/\d+", "/{id}"),
