@@ -1,13 +1,15 @@
 import json
-
 import logging
 import re
 import time
 
-from django.conf.settings import REQUEST_LOGGING_CONFIG
+from django.conf import settings
 from django.utils.deprecation import MiddlewareMixin
 
+REQUEST_LOGGING_CONFIG = settings.REQUEST_LOGGING_CONFIG
+
 request_logger = logging.getLogger(REQUEST_LOGGING_CONFIG.get("log_handler", __name__))
+
 
 class RequestLogMiddleware(MiddlewareMixin):
     def process_request(self, request):

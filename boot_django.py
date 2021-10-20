@@ -16,15 +16,15 @@ def boot_django():
                 "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
             }
         },
-        INSTALLED_APPS=("request_logging", "my_app", ),
+        INSTALLED_APPS=("request_logging",),
         MIDDLEWARE=["request_logging.middleware.RequestLogMiddleware"],
         REQUEST_LOGGING_CONFIG={
             "paths_regex": [
                 (r"\/\d+", "/{id}"),
                 (r"\/apply-coupon/?([^\/]*)?", "/apply-coupon/{id}"),
             ],
-            "log_data_extra": {"athena_table": "motor_api_request", "athena": True,},
-            "log_url_path": "/api/",
+            "log_data_extra": {"athena_table": "motor_api_request", "athena": True},
+            # "log_url_path": "/api/",
         },
         ROOT_URLCONF="my_app.urls",
         TIME_ZONE="UTC",
