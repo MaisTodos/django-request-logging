@@ -21,7 +21,7 @@ class RequestLogMiddleware(MiddlewareMixin):
 
         url_base = request.path
 
-        for regex, pattern in REQUEST_LOGGING_CONFIG.get("paths_regex", []):
+        for regex, pattern in REQUEST_LOGGING_CONFIG.get("paths_regex_replace", []):
             url_base = re.sub(regex, pattern, url_base)
 
         log_data = {
