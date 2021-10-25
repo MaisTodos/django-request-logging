@@ -48,6 +48,9 @@ Edit your project `settings.py`, including the `REQUEST_LOGGING_CONFIG` dict:
 - `log_url_path` (str):
   - Description: Define the path "starts with" pattern to activate the middleware logger
   - Example: "/api/"
+- `log_handler` (str):
+  - Description: The django log handler to be user by the middleware
+  - Example: "default"
 
 Source
 
