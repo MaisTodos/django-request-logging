@@ -66,5 +66,5 @@ class RequestLogMiddleware(MiddlewareMixin):
             REQUEST_LOGGING_CONFIG.get("log_url_path", "")
         ):
             log_data = self.extract_log_info(request=request, response=response)
-            request_logger.info(log_data)
+            request_logger.info("django-request-logging", extra=log_data)
         return response
