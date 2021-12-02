@@ -12,22 +12,24 @@ class middlewareTest(TestCase):
 
         self.client.get("/ping/")
 
+        extra = {
+            "message": "django_api_request",
+            "remote_address": "127.0.0.1",
+            "request_method": "GET",
+            "request_path_base": "/ping/",
+            "request_path": "/ping/",
+            "request_querystring": {},
+            "response_code": 200,
+            "user": None,
+            "starts_at": 1577836800.0,
+            "ends_at": 1577836800.0,
+            "run_time": 0.0,
+            "athena_table": "motor_api_request",
+            "athena": True,
+        }
         mock_logger.info.assert_called_once_with(
-            {
-                "message": "django_api_request",
-                "remote_address": "127.0.0.1",
-                "request_method": "GET",
-                "request_path_base": "/ping/",
-                "request_path": "/ping/",
-                "request_querystring": {},
-                "response_code": 200,
-                "user": None,
-                "starts_at": 1577836800.0,
-                "ends_at": 1577836800.0,
-                "run_time": 0.0,
-                "athena_table": "motor_api_request",
-                "athena": True,
-            }
+            'django-request-logging',
+            extra=extra
         )
 
     @freezegun.freeze_time("2020-01-01")
@@ -35,24 +37,25 @@ class middlewareTest(TestCase):
     def test_post_ping(self, mock_logger):
 
         self.client.post("/ping/")
-
+        extra = {
+            "message": "django_api_request",
+            "remote_address": "127.0.0.1",
+            "request_method": "POST",
+            "request_path_base": "/ping/",
+            "request_path": "/ping/",
+            "request_querystring": {},
+            "response_code": 200,
+            "user": None,
+            "starts_at": 1577836800.0,
+            "ends_at": 1577836800.0,
+            "run_time": 0.0,
+            "athena_table": "motor_api_request",
+            "athena": True,
+            "response_body": {"pong": True},
+        }
         mock_logger.info.assert_called_once_with(
-            {
-                "message": "django_api_request",
-                "remote_address": "127.0.0.1",
-                "request_method": "POST",
-                "request_path_base": "/ping/",
-                "request_path": "/ping/",
-                "request_querystring": {},
-                "response_code": 200,
-                "user": None,
-                "starts_at": 1577836800.0,
-                "ends_at": 1577836800.0,
-                "run_time": 0.0,
-                "athena_table": "motor_api_request",
-                "athena": True,
-                "response_body": {"pong": True},
-            }
+            'django-request-logging',
+            extra=extra
         )
 
     @freezegun.freeze_time("2020-01-01")
@@ -73,21 +76,22 @@ class middlewareTest(TestCase):
                 "response_body": '{"pong": true}',
             }
         )
-
+        extra = {
+            "message": "django_api_request",
+            "remote_address": "127.0.0.1",
+            "request_method": "POST",
+            "request_path_base": "/ping/",
+            "request_path": "/ping/",
+            "request_querystring": {},
+            "response_code": 200,
+            "user": None,
+            "starts_at": 1577836800.0,
+            "ends_at": 1577836800.0,
+            "run_time": 0.0,
+            "athena_table": "motor_api_request",
+            "athena": True,
+        }
         mock_logger.info.assert_called_once_with(
-            {
-                "message": "django_api_request",
-                "remote_address": "127.0.0.1",
-                "request_method": "POST",
-                "request_path_base": "/ping/",
-                "request_path": "/ping/",
-                "request_querystring": {},
-                "response_code": 200,
-                "user": None,
-                "starts_at": 1577836800.0,
-                "ends_at": 1577836800.0,
-                "run_time": 0.0,
-                "athena_table": "motor_api_request",
-                "athena": True,
-            }
+            'django-request-logging',
+            extra=extra
         )
