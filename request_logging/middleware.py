@@ -25,7 +25,7 @@ class RequestLogMiddleware(MiddlewareMixin):
             url_base = re.sub(regex, pattern, url_base)
 
         log_data = {
-            "message": "django_api_request",
+            "django_message": "django_api_request",
             "remote_address": request.META["REMOTE_ADDR"],
             "request_method": request.method,
             "request_path_base": url_base,
@@ -51,7 +51,7 @@ class RequestLogMiddleware(MiddlewareMixin):
             except json.decoder.JSONDecodeError:
                 request_logger.error(
                     {
-                        "message": "api_response_decode_error",
+                        "err_message": "api_response_decode_error",
                         "request_method": request.method,
                         "request_path": request.get_full_path(),
                         "response_code": response.status_code,
